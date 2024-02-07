@@ -8,8 +8,7 @@ import styled from "styled-components";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 const Wrap = styled.div`
-  height: 90vh;
-  overflow: scroll;
+
 `;
 
 export const Results = () => {
