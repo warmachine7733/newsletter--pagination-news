@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: url("/public/img/mario-bg.png") no-repeat;
+  background-size: 100%;
+  background-color: #95e8f3;
+  background-position: bottom;
+  font-family: monospace
 }
 
 code {
