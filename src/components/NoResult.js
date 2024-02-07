@@ -9,7 +9,7 @@ export const NoResult = () => {
   return (
     <Wrap>
       <p>
-        Whoopsie-doodle! 🤷‍♂️ Looks like we're in a pickle 🥒. No results found!
+        Whoopsie-doodle! 🤷‍♂️ Looks like we're in a pickle 🥒. Failed to get results!
         Fancy trying another search term? 🧐
       </p>
       <Link to="/">Home</Link>
