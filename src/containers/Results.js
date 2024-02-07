@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { StyledPagination } from "../components/StyledPagination";
 import { searchKeywords } from "../store/reducers";
 import styled from "styled-components";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 const Wrap = styled.div`
   height: 90vh;
@@ -14,6 +14,7 @@ const Wrap = styled.div`
 
 const Results = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
   const currentPage = useSelector((state) => state.search.currentPage);
@@ -25,7 +26,9 @@ const Results = () => {
 
   useEffect(() => {
     console.log("calling");
-    setSearchParams(`?${new URLSearchParams({ keyword, currentPage })}`);
+    navigate(
+      setSearchParams(`?${new URLSearchParams({ keyword, currentPage })}`)
+    );
     dispatch(
       searchKeywords({
         keyword: keyword ? keyword : searchParams.get("keyword"),
