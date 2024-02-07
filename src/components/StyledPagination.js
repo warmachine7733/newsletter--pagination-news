@@ -17,6 +17,7 @@ const Wrap = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background: #94e7eb;
 `;
 const CustomActionButtons = styled(StyledButton)`
   border-radius: 10px 0px 0px 10px !important;
@@ -55,7 +56,7 @@ export const StyledPagination = ({ pages, currentPage, isLoading }) => {
       <StyledHyperLinkPages
         onClick={() => dispatch(onNavigateCertainIndex(currentPage))}
       >
-       {currentPage }
+        {currentPage}
       </StyledHyperLinkPages>
 
       <StyledHyperLinkPages
