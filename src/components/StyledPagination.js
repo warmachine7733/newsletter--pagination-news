@@ -52,17 +52,10 @@ export const StyledPagination = ({ pages, currentPage, isLoading }) => {
       >
         prev
       </CustomActionButtons>
-
-      <StyledHyperLinkPages onClick={() => dispatch(onNavigateCertainIndex(1))}>
-        1,
-      </StyledHyperLinkPages>
-      <StyledHyperLinkPages onClick={() => dispatch(onNavigateCertainIndex(2))}>
-        2, ..
-      </StyledHyperLinkPages>
       <StyledHyperLinkPages
         onClick={() => dispatch(onNavigateCertainIndex(currentPage))}
       >
-        {currentPage > 2 ? currentPage : "."}
+       {currentPage }
       </StyledHyperLinkPages>
 
       <StyledHyperLinkPages
