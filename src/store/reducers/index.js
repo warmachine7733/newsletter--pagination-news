@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const instance = axios.create({
-  baseURL:
-    "https://content.guardianapis.com/search?api-key=test&show-fields=thumbnail,headline&show-tags=keyword&",
+  baseURL: "https://content.guardianapis.com/",
   timeout: 1000,
 });
 
@@ -10,7 +9,7 @@ export const searchKeywords = createAsyncThunk(
   "search",
   async ({ keyword, page = "1", size = "10" }) => {
     const response = await instance.get(
-      `q=${keyword}&page=${page}&page-size=${size}`
+      `search?api-key=test&show-fields=thumbnail,headline&show-tags=keyword&q=${keyword}&page=${page}&page-size=${size}`
     );
     return { response: response.data.response, keyword };
   }
