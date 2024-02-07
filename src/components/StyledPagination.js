@@ -17,7 +17,6 @@ const Wrap = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: #94e7eb;
 `;
 const CustomActionButtons = styled(StyledButton)`
   border-radius: 10px 0px 0px 10px !important;
@@ -26,6 +25,7 @@ const StyledHyperLinkPages = styled.div`
   font-size: 12px;
   font-weight: 100;
   padding: 5px;
+  background: #94e7eb;
   &: hover {
     cursor: pointer;
   }
