@@ -34,7 +34,6 @@ const Image = styled.img`
   max-width: 130px;
   src: ${(props) => props.src};
   @media (max-width: 900px) {
-    width: 60%;
     max-width: -webkit-fill-available;
   }
 `;
@@ -53,6 +52,8 @@ const Description = styled.div`
 `;
 
 const Anchor = styled.a`
+  min-width: 130px;
+  max-width: 130px;
   text-decoration: none;
   color: black;
   display: flex;
