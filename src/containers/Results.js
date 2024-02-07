@@ -5,14 +5,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { StyledPagination } from "../components/StyledPagination";
 import { searchKeywords } from "../store/reducers";
 import styled from "styled-components";
-import { createSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const Wrap = styled.div`
   height: 90vh;
   overflow: scroll;
 `;
 
-export const Results = () => {
+const Results = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
   const currentPage = useSelector((state) => state.search.currentPage);
@@ -20,24 +21,30 @@ export const Results = () => {
   const pages = search.data && search.data.pages;
   const isLoading = useSelector((state) => state.search.isLoading);
   const isError = useSelector((state) => state.search.isError);
-  console.log("pages", isLoading);
   const { keyword } = search;
 
   useEffect(() => {
+    console.log("calling");
+    setSearchParams(`?${new URLSearchParams({ keyword, currentPage })}`);
     dispatch(
       searchKeywords({
-        keyword,
-        page: currentPage,
+        keyword: keyword ? keyword : searchParams.get("keyword"),
+        page: currentPage ? currentPage : searchParams.get("currentPage"),
       })
     );
-  }, [dispatch, currentPage]);
+  }, [dispatch, keyword, currentPage]);
 
   return (
     <Wrap>
       {isLoading ? (
         <Loader />
       ) : (
-        <StyledResults results={results} keyword={keyword} isError={isError} />
+        <StyledResults
+          results={results}
+          keyword={keyword}
+          isError={isError}
+          searchKeywords={searchKeywords}
+        />
       )}
 
       <StyledPagination
@@ -48,3 +55,5 @@ export const Results = () => {
     </Wrap>
   );
 };
+
+export default Results;

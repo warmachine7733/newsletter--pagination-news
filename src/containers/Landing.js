@@ -32,7 +32,6 @@ const Landing = () => {
   const handleClick = async () => {
     if (keyword.trim() !== "") {
       const { payload } = await dispatch(searchKeywords({ keyword }));
-      console.log(payload.response);
       if (payload.response.status === "ok") {
         navigate("results");
       }

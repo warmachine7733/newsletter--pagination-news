@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NoResult } from "./NoResult";
+import { UseDispatch, useDispatch } from "react-redux";
 
 const Wrap = styled.div`
   min-height: 10rem;
@@ -28,8 +29,9 @@ const SubWrap = styled.div`
   }
 `;
 const Image = styled.img`
-  width: 80%;
   border-radius: 1rem;
+  min-width: 130px;
+  max-width: 130px;
   src: ${(props) => props.src};
   @media (max-width: 900px) {
     width: 60%;
@@ -42,21 +44,47 @@ const Description = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  padding: 4px;
+  padding: 15px;
   font-size: 12px;
   @media (max-width: 900px) {
-    padding: 4px;
+    padding: 12px;
     font-size: 10px;
   }
 `;
 
 const Anchor = styled.a`
-  width: 200px;
   text-decoration: none;
   color: black;
+  font-size: 15px;
+  font-weight: 600;
+`;
+const DescriptionAnchor = styled.a`
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
 `;
 
-export const StyledResults = ({ results, keyword, isError }) => {
+const Keywords = styled.button`
+  color: blue;
+  border: 0.5px solid black;
+  margin: 2px;
+  font-size: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const WrapperKeywords = styled.div`
+  padding-top: 25px;
+`;
+export const StyledResults = ({
+  results,
+  keyword,
+  isError,
+  searchKeywords,
+}) => {
+  const dispatch = useDispatch();
   return (
     <Wrap>
       <Title>Showing result for "{keyword}"</Title>
@@ -72,15 +100,28 @@ export const StyledResults = ({ results, keyword, isError }) => {
               />
             </Anchor>
             <Description>
-              <a
+              <DescriptionAnchor
                 style={{ textDecoration: "none", color: "black" }}
                 href={each.webUrl}
                 target="_blank"
                 rel="noreferrer"
               >
                 {each.fields.headline}
-              </a>
-              <div>keywords</div>
+              </DescriptionAnchor>
+              <WrapperKeywords>
+                keyword:
+                {each.tags.length > 0
+                  ? each.tags.map((each) => (
+                      <Keywords
+                        onClick={() =>
+                          dispatch(searchKeywords({ keyword: each.webTitle }))
+                        }
+                      >
+                        {each.webTitle}
+                      </Keywords>
+                    ))
+                  : ""}
+              </WrapperKeywords>
             </Description>
           </SubWrap>
         ))

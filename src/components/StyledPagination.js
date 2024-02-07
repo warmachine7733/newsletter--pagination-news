@@ -34,6 +34,7 @@ export const StyledPagination = ({ pages, currentPage, isLoading }) => {
 
   return (
     <Wrap>
+      <div>home</div>
       <CustomActionButtons
         onClick={() => dispatch(onNavigatePrev())}
         disabled={currentPage === 1 || isLoading}
@@ -45,12 +46,18 @@ export const StyledPagination = ({ pages, currentPage, isLoading }) => {
         1,
       </StyledHyperLinkPages>
       <StyledHyperLinkPages onClick={() => dispatch(onNavigateCertainIndex(2))}>
-        2, ....
+        2, ..
       </StyledHyperLinkPages>
+      <StyledHyperLinkPages
+        onClick={() => dispatch(onNavigateCertainIndex(currentPage))}
+      >
+        {currentPage > 2 ?  currentPage    : "."}
+      </StyledHyperLinkPages>
+
       <StyledHyperLinkPages
         onClick={() => dispatch(onNavigateCertainIndex(pages))}
       >
-        {pages}
+        ..{pages}
       </StyledHyperLinkPages>
 
       <StyledButton
