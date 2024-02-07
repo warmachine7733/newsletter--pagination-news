@@ -7,6 +7,7 @@ import {
   onNavigatePrev,
   onNavigateCertainIndex,
 } from "../store/reducers";
+import { Link } from "react-router-dom";
 
 const Wrap = styled.div`
   position: absolute;
@@ -28,13 +29,23 @@ const StyledHyperLinkPages = styled.div`
     cursor: pointer;
   }
 `;
+const Home = styled.div`
+  position: absolute;
+  left: 5%;
+  color: #c8ab06;
+  font-size: 2rem;
+`;
 
 export const StyledPagination = ({ pages, currentPage, isLoading }) => {
   const dispatch = useDispatch();
 
   return (
     <Wrap>
-      <div>home</div>
+      <Home>
+        <Link to="/">
+          <i className="fa fa-home" aria-hidden="true"></i>
+        </Link>
+      </Home>
       <CustomActionButtons
         onClick={() => dispatch(onNavigatePrev())}
         disabled={currentPage === 1 || isLoading}
@@ -51,7 +62,7 @@ export const StyledPagination = ({ pages, currentPage, isLoading }) => {
       <StyledHyperLinkPages
         onClick={() => dispatch(onNavigateCertainIndex(currentPage))}
       >
-        {currentPage > 2 ?  currentPage    : "."}
+        {currentPage > 2 ? currentPage : "."}
       </StyledHyperLinkPages>
 
       <StyledHyperLinkPages

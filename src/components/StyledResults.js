@@ -84,13 +84,7 @@ const WrapperKeywords = styled.div`
     padding-top: 1px;
   }
 `;
-export const StyledResults = ({
-  results,
-  keyword,
-  isError,
-  setSearchParams,
-  currentPage,
-}) => {
+export const StyledResults = ({ results, keyword, isError, handleParams }) => {
   const dispatch = useDispatch();
   return (
     <Wrap>
@@ -121,12 +115,10 @@ export const StyledResults = ({
                   ? each.tags.map((each) => (
                       <Keywords
                         onClick={() =>
-                          setSearchParams(
-                            `?${new URLSearchParams({
-                              keyword: each.webTitle,
-                              currentPage,
-                            })}`
-                          )
+                          handleParams({
+                            params: each.webTitle,
+                            page: "keywords",
+                          })
                         }
                       >
                         {each.webTitle}

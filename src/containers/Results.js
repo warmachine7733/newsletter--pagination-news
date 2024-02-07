@@ -23,33 +23,47 @@ const Results = () => {
   const isLoading = useSelector((state) => state.search.isLoading);
   const isError = useSelector((state) => state.search.isError);
   const { keyword } = search;
+  const newKeyword = searchParams.get("keyword");
+  const newCurrentPage = parseInt(searchParams.get("currentPage"));
 
-  useEffect(() => {
-    const newKeyword = searchParams.get("keyword");
-    const newCurrentPage = searchParams.get("currentPage");
-
-    if (keyword !== newKeyword) {
-      navigate(
-        setSearchParams(
-          `?${new URLSearchParams({
-            keyword: newKeyword,
-            currentPage: newCurrentPage,
-          })}`
-        )
+  const handleParams = ({ params, page }) => {
+    if (page === "useEffect") {
+      setSearchParams(
+        `?${new URLSearchParams({
+          keyword: page === "useEffect" ? newKeyword : keyword,
+          currentPage: currentPage ? currentPage : newCurrentPage,
+        })}`
       );
       dispatch(
         searchKeywords({
-          keyword: newKeyword,
-          page: newCurrentPage,
+          keyword: page === "useEffect" ? newKeyword : keyword,
+          page: currentPage ? currentPage : newCurrentPage,
+        })
+      );
+    } else {
+      setSearchParams(
+        `?${new URLSearchParams({
+          keyword: page === "keywords" ? params : keyword,
+          currentPage: currentPage ? currentPage : newCurrentPage,
+        })}`
+      );
+      dispatch(
+        searchKeywords({
+          keyword: page === "keywords" ? params : keyword,
+          page: currentPage ? currentPage : newCurrentPage,
         })
       );
     }
-    // dispatch(
-  }, [searchParams]);
+  };
 
   useEffect(() => {
-    console.log("2nd useEffect");
-  }, []);
+    if (
+      (keyword !== newKeyword && keyword !== undefined) ||
+      (currentPage !== newCurrentPage && currentPage !== undefined)
+    ) {
+      navigate(handleParams({ params: keyword, page: "useEffect" }));
+    }
+  }, [keyword, currentPage, newKeyword]);
 
   return (
     <Wrap>
@@ -60,7 +74,7 @@ const Results = () => {
           results={results}
           keyword={keyword}
           isError={isError}
-          setSearchParams={setSearchParams}
+          handleParams={handleParams}
           currentPage={currentPage}
         />
       )}
