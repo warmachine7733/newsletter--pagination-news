@@ -81,14 +81,15 @@ const Keywords = styled.button`
 const WrapperKeywords = styled.div`
   padding-top: 25px;
   @media (max-width: 900px) {
-   padding-top: 1px
+    padding-top: 1px;
   }
 `;
 export const StyledResults = ({
   results,
   keyword,
   isError,
-  searchKeywords,
+  setSearchParams,
+  currentPage,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -120,7 +121,12 @@ export const StyledResults = ({
                   ? each.tags.map((each) => (
                       <Keywords
                         onClick={() =>
-                          dispatch(searchKeywords({ keyword: each.webTitle }))
+                          setSearchParams(
+                            `?${new URLSearchParams({
+                              keyword: each.webTitle,
+                              currentPage,
+                            })}`
+                          )
                         }
                       >
                         {each.webTitle}

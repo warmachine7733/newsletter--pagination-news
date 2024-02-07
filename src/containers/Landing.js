@@ -33,7 +33,7 @@ const Landing = () => {
     if (keyword.trim() !== "") {
       const { payload } = await dispatch(searchKeywords({ keyword }));
       if (payload.response.status === "ok") {
-        navigate("results");
+        navigate(`results?${new URLSearchParams({ keyword, currentPage: 1 })}`);
       }
     }
   };

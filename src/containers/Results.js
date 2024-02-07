@@ -25,17 +25,31 @@ const Results = () => {
   const { keyword } = search;
 
   useEffect(() => {
-    console.log("calling");
-    navigate(
-      setSearchParams(`?${new URLSearchParams({ keyword, currentPage })}`)
-    );
-    dispatch(
-      searchKeywords({
-        keyword: keyword ? keyword : searchParams.get("keyword"),
-        page: currentPage ? currentPage : searchParams.get("currentPage"),
-      })
-    );
-  }, [dispatch, keyword, currentPage]);
+    const newKeyword = searchParams.get("keyword");
+    const newCurrentPage = searchParams.get("currentPage");
+
+    if (keyword !== newKeyword) {
+      navigate(
+        setSearchParams(
+          `?${new URLSearchParams({
+            keyword: newKeyword,
+            currentPage: newCurrentPage,
+          })}`
+        )
+      );
+      dispatch(
+        searchKeywords({
+          keyword: newKeyword,
+          page: newCurrentPage,
+        })
+      );
+    }
+    // dispatch(
+  }, [searchParams]);
+
+  useEffect(() => {
+    console.log("2nd useEffect");
+  }, []);
 
   return (
     <Wrap>
@@ -46,7 +60,8 @@ const Results = () => {
           results={results}
           keyword={keyword}
           isError={isError}
-          searchKeywords={searchKeywords}
+          setSearchParams={setSearchParams}
+          currentPage={currentPage}
         />
       )}
 
