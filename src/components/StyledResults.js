@@ -55,8 +55,8 @@ const Description = styled.div`
 const Anchor = styled.a`
   text-decoration: none;
   color: black;
-  font-size: 15px;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
 `;
 const DescriptionAnchor = styled.a`
   text-decoration: none;
