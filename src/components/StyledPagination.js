@@ -9,6 +9,9 @@ import {
 } from "../store/reducers";
 
 const Wrap = styled.div`
+  position: absolute;
+  bottom: 2%;
+  width: 85%;
   text-align: center;
   display: flex;
   justify-content: flex-end;

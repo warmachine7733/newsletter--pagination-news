@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { NoResult } from "./NoResult";
 
 const Wrap = styled.div`
-  height: 90vh;
-  overflow-y: scroll;
+  min-height: 10rem;
+  max: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,12 +28,11 @@ const SubWrap = styled.div`
   }
 `;
 const Image = styled.img`
+  width: 80%;
   border-radius: 1rem;
-  max-width: 150px;
-  width: 100vh;
-  max-height: 90px;
   src: ${(props) => props.src};
   @media (max-width: 900px) {
+    width: 60%;
     max-width: -webkit-fill-available;
   }
 `;
@@ -43,14 +42,16 @@ const Description = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  padding: 4px 0 8px 18px;
+  padding: 4px;
   font-size: 12px;
   @media (max-width: 900px) {
+    padding: 4px;
     font-size: 10px;
   }
 `;
 
 const Anchor = styled.a`
+  width: 200px;
   text-decoration: none;
   color: black;
 `;
