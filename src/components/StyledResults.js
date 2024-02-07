@@ -47,7 +47,7 @@ const Description = styled.div`
   padding: 15px;
   font-size: 12px;
   @media (max-width: 900px) {
-    padding: 12px;
+    padding: 10px;
     font-size: 10px;
   }
 `;
@@ -63,6 +63,9 @@ const DescriptionAnchor = styled.a`
   color: black;
   font-size: 15px;
   font-weight: 600;
+  @media (max-width: 900px) {
+    font-size: 10px;
+  }
 `;
 
 const Keywords = styled.button`
@@ -77,6 +80,9 @@ const Keywords = styled.button`
 
 const WrapperKeywords = styled.div`
   padding-top: 25px;
+  @media (max-width: 900px) {
+   padding-top: 1px
+  }
 `;
 export const StyledResults = ({
   results,
