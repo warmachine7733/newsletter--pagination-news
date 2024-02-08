@@ -63,7 +63,7 @@ const Results = () => {
     ) {
       navigate(handleParams({ params: keyword, page: "useEffect" }));
     }
-  }, [keyword, currentPage, newKeyword]);
+  }, [keyword, currentPage]);
 
   return (
     <Wrap>
