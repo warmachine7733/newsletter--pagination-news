@@ -73,6 +73,7 @@ const Keywords = styled.button`
   border: 0.5px solid black;
   margin: 2px;
   font-size: 10px;
+  border-radius: 5px;
   &:hover {
     cursor: pointer;
   }
