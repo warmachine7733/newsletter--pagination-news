@@ -88,6 +88,7 @@ const WrapperKeywords = styled.div`
 
 const Time = styled.div`
 font-weight: 100;
+font-size: 10px
 `;
 export const StyledResults = ({ results, keyword, isError, handleParams }) => {
   return (
