@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NoResult } from "./NoResult";
+import moment from "moment";
 
 const Wrap = styled.div`
   max: 700px;
@@ -84,6 +85,10 @@ const WrapperKeywords = styled.div`
     padding-top: 1px;
   }
 `;
+
+const Time = styled.div`
+font-weight: 100;
+`;
 export const StyledResults = ({ results, keyword, isError, handleParams }) => {
   return (
     <Wrap>
@@ -107,7 +112,11 @@ export const StyledResults = ({ results, keyword, isError, handleParams }) => {
                 rel="noreferrer"
               >
                 {each.fields.headline}
+                <Time>
+                  {moment(each.webPublicationDate).startOf("hour").fromNow()}
+                </Time>
               </DescriptionAnchor>
+
               <WrapperKeywords>
                 keywords:
                 {each.tags.length > 0
