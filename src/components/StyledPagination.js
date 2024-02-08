@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Wrap = styled.div`
   position: absolute;
-  bottom: 2%;
+  bottom: 0.5%;
   width: 85%;
   text-align: center;
   display: flex;

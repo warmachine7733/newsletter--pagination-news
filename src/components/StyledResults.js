@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { NoResult } from "./NoResult";
 
 const Wrap = styled.div`
-  min-height: 10rem;
   max: 700px;
   display: flex;
   flex-direction: column;
