@@ -96,7 +96,7 @@ export const StyledResults = ({ results, keyword, isError, handleParams }) => {
               <Image
                 src={
                   each.fields.thumbnail ||
-                  `${process.env.PUBLIC_URL}/logo192.png`
+                  `${process.env.PUBLIC_URL}/img/ereader.png`
                 }
               />
             </Anchor>
