@@ -27,14 +27,12 @@ const Landing = () => {
   useEffect(() => {
     /**clear store */
     dispatch(resetStore());
-  }, []);
+  }, [dispatch]);
 
   const handleClick = async () => {
     if (keyword.trim() !== "") {
-      const { payload } = await dispatch(searchKeywords({ keyword }));
-      if (payload.response.status === "ok") {
-        navigate(`results?${new URLSearchParams({ keyword, currentPage: 1 })}`);
-      }
+      await dispatch(searchKeywords({ keyword }));
+      navigate(`results?${new URLSearchParams({ keyword, currentPage: 1 })}`);
     }
   };
   const handleKeyPress = (e) => {

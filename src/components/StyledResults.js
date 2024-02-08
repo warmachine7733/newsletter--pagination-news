@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { NoResult } from "./NoResult";
-import { UseDispatch, useDispatch } from "react-redux";
 
 const Wrap = styled.div`
   min-height: 10rem;
@@ -86,7 +85,6 @@ const WrapperKeywords = styled.div`
   }
 `;
 export const StyledResults = ({ results, keyword, isError, handleParams }) => {
-  const dispatch = useDispatch();
   return (
     <Wrap>
       <Title>Showing result for "{keyword}"</Title>
@@ -111,7 +109,7 @@ export const StyledResults = ({ results, keyword, isError, handleParams }) => {
                 {each.fields.headline}
               </DescriptionAnchor>
               <WrapperKeywords>
-                keyword:
+                keywords:
                 {each.tags.length > 0
                   ? each.tags.map((each) => (
                       <Keywords

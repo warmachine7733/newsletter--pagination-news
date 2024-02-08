@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import StyledButton from "../components/StyledButton";
 import {
@@ -62,7 +62,7 @@ export const StyledPagination = ({ pages, currentPage, isLoading }) => {
       <StyledHyperLinkPages
         onClick={() => dispatch(onNavigateCertainIndex(pages))}
       >
-        ..{pages}
+        out of {pages}
       </StyledHyperLinkPages>
 
       <StyledButton

@@ -31,7 +31,6 @@ export const search = createSlice({
       state.currentPage--;
     },
     onNavigateCertainIndex: (state, action) => {
-      console.log(action);
       state.currentPage = action.payload;
     },
     resetStore: () => {
